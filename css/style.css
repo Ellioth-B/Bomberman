@@ -1,0 +1,44 @@
+body {
+	background: #000;
+	color: white;
+}
+
+.bombermanPj {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+    top: 0;
+    left: 0;
+	background: url("./images/Bomberman-pink.png") no-repeat center center;
+	-o-background-size: 100% 100%, auto;
+	-moz-background-size: 100% 100%, auto;
+	-webkit-background-size: 100% 100%, auto;
+	background-size: 100% 100%, auto;
+    transition: all .1s ease-in-out;
+    -webkit-transition: all .1s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all .1s ease-in-out; /** Firefox **/
+    -o-transition: all .1s ease-in-out; /** Opera **/
+    z-index: 1;
+}
+
+.bomb {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: #000 url("./images/bomb_pink.png") no-repeat center center;
+	-o-background-size: 100% 100%, auto;
+	-moz-background-size: 100% 100%, auto;
+	-webkit-background-size: 100% 100%, auto;
+	background-size: 100% 100%, auto;
+}
+
+.flame {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: #000 url("./images/flame.png") no-repeat center center;
+	-o-background-size: 100% 100%, auto;
+	-moz-background-size: 100% 100%, auto;
+	-webkit-background-size: 100% 100%, auto;
+	background-size: 100% 100%, auto;
+}

@@ -10,5 +10,9 @@
 </head>
 <body ng-controller="bombermanController as control" ng-keydown="">
 	<div class="image bombermanPj"></div>
+	<modal-dialog show='modalShown' width='750px' height='65%'>
+		<button class="ng-modal-button reload-button" ng-click="reloadPage();">Restart</button>
+		<button class="ng-modal-button end-button" ng-click="endGame();">End Game</button>
+	</modal-dialog>
 </body>
 </html>

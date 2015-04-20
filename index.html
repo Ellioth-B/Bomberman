@@ -6,9 +6,13 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<script type='text/javascript' src='js/jquery-1.11.1.js'></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script	type="text/javascript" src="js/app.js"></script>
+	<script	type="text/javascript" src="js/bomberman-app.js"></script>
+	<script type="text/javascript" src="js/bomberman-map.js"></script>
+	<script type="text/javascript" src="js/bomberman-directive.js"></script>
+	<script type="text/javascript" src="js/modal_dialog.js"></script>
 </head>
 <body ng-controller="bombermanController as control" ng-keydown="">
+	<table bombermap></table>
 	<div class="image bombermanPj"></div>
 	<modal-dialog show='modalShown' width='750px' height='65%'>
 		<button class="ng-modal-button reload-button" ng-click="reloadPage();">Restart</button>

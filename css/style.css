@@ -5,8 +5,8 @@ body {
 
 .bombermanPj {
 	background: url("./images/Bomberman-pink.png") no-repeat center center;
-	top: 0;
-    left: 0;
+	top: 50px;
+    left: 50px;
     z-index: 1;
 }
 
@@ -20,6 +20,14 @@ body {
 
 .flame {
 	background: #000 url("./images/flame.png") no-repeat center center;
+}
+
+.wall {
+	background: #000 url("./images/bomb_brick.png") no-repeat center center;
+}
+
+.box {
+	background: #000 url("./images/bomb_box.png") no-repeat center center;
 }
 
 .image {

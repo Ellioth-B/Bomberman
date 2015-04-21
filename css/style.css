@@ -41,33 +41,32 @@ body {
 }
 
 .ng-modal-overlay {
-  	/* A dark translucent div that covers the whole screen */
-  	position:absolute;
-  	z-index:9999;
-  	top:0;
-  	left:0;
-  	width:100%;
-  	height:100%;
-  	background-color:#000000;
-  	opacity: 0.8;
+	/* A dark translucent div that covers the whole screen */
+	position:absolute;
+	z-index:9999;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:#000000;
+	opacity: 0.8;
 }
 .ng-modal-dialog {
-  	/* A centered div above the overlay with a box shadow. */
-  	color: black;
-  	background: #000 url("./images/game-over.png") no-repeat center center;
-  	z-index:10000;
-  	position: absolute;
-  	width: 50%; /* Default */	
-  	/* Center the dialog */
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
-  	-webkit-transform: translate(-50%, -50%);
-  	-moz-transform: translate(-50%, -50%);
+	/* A centered div above the overlay with a box shadow. */
+	z-index:10000;
+	position: absolute;
+	width: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
 }
 .ng-modal-dialog-content {
-  	padding:10px;
-  	text-align: left;
+  background: url("./images/game-over.png") no-repeat center center;
+  background-size: contain;
+  width: 100%;
+  height: 95%;
 }
 
 .ng-modal-button {
@@ -76,25 +75,25 @@ body {
 	bottom: 0;
 	width: 130px;
 	padding: 10px 20px;
-  	border-radius: 10px;
-  	border-width: 3px;
-  	color: white;
-  	font-weight: bold;
+  border-radius: 10px;
+  border-width: 3px;
+  color: white;
+  font-weight: bold;
 }
 .reload-button {
-  	background: #00CC33;
-  	border-color: #009933;
+	background: #00CC33;
+	border-color: #009933;
 }
 .reload-button:hover {
-  	background: #66CC33;
-  	border-color: #33FF33;
+	background: #66CC33;
+	border-color: #33FF33;
 }
 .end-button {
-  	background: #CC3333;
-  	border-color: #993333;
-  	left: 52%;
+	background: #CC3333;
+	border-color: #993333;
+	left: 52%;
 }
 .end-button:hover {
-  	background: #FF3333;
-  	border-color: #FF0033;
+	background: #FF3333;
+	border-color: #FF0033;
 }

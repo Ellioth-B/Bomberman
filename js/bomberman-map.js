@@ -16,7 +16,7 @@ app.directive('bombermap', function ($compile, $http) {
                 console.log("Request failed", error);
             });
         
-        function generateMap (data) {
+        var generateMap = function (data) {
             if(data.length == 0) {
                 alert("Something went wrong: there is no map available."); 
                 return "";
@@ -27,9 +27,16 @@ app.directive('bombermap', function ($compile, $http) {
                 if(data[i].wall) {
                     html += "<div class='image wall' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";
                     scope.bricks.push((50 * data[i].x) + "," + (50 * data[i].y));
-                }else if(data[i].box) {
+                }else if(data[i].box) {                    
                     html += "<div class='image box' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
-                    scope.boxes.push((50 * data[i].x) + "," + (50 * data[i].y));
+                    scope.boxes.push((50 * data[i].x) + "," + (50 * data[i].y));                    
+                    if(data[i].fireup){
+                        html += "<div class='image fireup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
+                        scope.fireup.push((50 * data[i].x) + "," + (50 * data[i].y));  
+                    }
+                }else if(data[i].enemy) {
+                    html += "<div class='image enemy' style='top:"+ data[i].x +"px;left:"+ data[i].y +"px;'></div>";
+                    scope.enemies.push(data[i].x + "," + data[i].y);
                 }
             }
 

@@ -10,6 +10,10 @@ app.controller('bombermanController', function($scope, $window){
     $scope.flames = []; //Array with all flames shown
     $scope.bricks = []; //Array with all the bricks positions (wall, non destructible)
     $scope.boxes = []; //Array with all the boxes positions (destructibles)
+    $scope.bomber_top = 50;
+    $scope.bomber_left = 50;
+    $scope.enemies = [];
+    $scope.fireup = [];
 
     $scope.reloadPage = function() {
        $window.location.reload();

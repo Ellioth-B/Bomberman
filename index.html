@@ -13,7 +13,7 @@
 </head>
 <body ng-controller="bombermanController as control" ng-keydown="">
 	<table bombermap></table>
-	<div class="image bombermanPj"></div>
+	<div class="image bombermanPj" style="top: {{bomber_top}}px; left: {{bomber_left}}px;"></div>
 	<modal-dialog show='modalShown' width='750px' height='65%'>
 		<button class="ng-modal-button reload-button" ng-click="reloadPage();">Restart</button>
 		<button class="ng-modal-button end-button" ng-click="endGame();">End Game</button>

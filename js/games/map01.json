@@ -3,726 +3,749 @@ angular.callbacks._0 ([
         x: 0,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 1,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 3,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 5,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 7,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 9,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 0,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[1, Y]
         x: 1,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 1,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 2,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 1,
         y: 4,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 1,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 1,
         y: 6,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 1,
         y: 7,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 8,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 9,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 1,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[2, Y]
         x: 2,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 1,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 2,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 2,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 7,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 2,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 9,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 2,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[3, Y]
         x: 3,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 3,
         y: 1,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 3,
         y: 2,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 4,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 6,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 3,
         y: 7,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 8,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 9,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 3,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[4, Y]
         x: 4,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 1,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 4,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 3,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 5,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 7,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 4,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 9,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 4,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[5, Y]
         x: 5,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 5,
         y: 1,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 5,
         y: 2,
         wall: false,
         box: true,
+        fireup: true
     },
     {
         x: 5,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 5,
         y: 4,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 5,
         y: 5,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 5,
         y: 6,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 5,
         y: 7,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 5,
         y: 8,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 5,
         y: 9,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 5,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[6, Y]
         x: 6,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 6,
         y: 1,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 6,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 6,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 6,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 6,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 6,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 6,
         y: 7,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 6,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 6,
         y: 9,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 6,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[7, Y]
         x: 7,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 7,
         y: 1,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 2,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 4,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 7,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 6,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 7,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 7,
         y: 8,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 9,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 7,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[8, Y]
         x: 8,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 1,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 8,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 5,
         wall: false,
         box: true,
+        fireup: true
     },
     {
         x: 8,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 7,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 8,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 9,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 8,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[9, Y]
         x: 9,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 1,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 2,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 3,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 9,
         y: 4,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 9,
         y: 5,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 9,
         y: 6,
         wall: false,
-        box: true,
+        box: true
     },
     {
         x: 9,
         y: 7,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 8,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 9,
         wall: false,
-        box: false,
+        box: false
     },
     {
         x: 9,
         y: 10,
         wall: true,
-        box: false,
+        box: false
     },
     {//[10, Y]
         x: 10,
         y: 0,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 1,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 2,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 3,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 4,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 5,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 6,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 7,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 8,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 9,
         wall: true,
-        box: false,
+        box: false
     },
     {
         x: 10,
         y: 10,
         wall: true,
+        box: false
+    },
+    {
+        x: 250,
+        y: 250,
+        wall: false,
         box: false,
+        enemy: true
+    },
+    {
+        x: 450,
+        y: 450,
+        wall: false,
+        box: false,
+        enemy: true
+    },
+    {
+        x: 450,
+        y: 50,
+        wall: false,
+        box: false,
+        enemy: true
     }
 ]);

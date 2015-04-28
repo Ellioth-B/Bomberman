@@ -42,12 +42,14 @@ app.directive('ngKeydown', function($timeout) {
         function check_Bomberman_Death (top, left) {
             //Checking flames collision if some present
             if(scope.flames.length != 0){
-                for(var i=1; i < scope.flames.length; i++) {            
-                    for(var j=0; j < scope.flames[i].length; j++){
-                        var res = scope.flames[i][j].split(",");
-                        if (res[0] == top && res[1] == left){
-                            game_over();
-                            break;
+                for(var i=scope.bombLimit; i > 0; i--) {      
+                    if(scope.flames[i]){
+                        for(var j=0; j < scope.flames[i].length; j++){
+                            var res = scope.flames[i][j].split(",");
+                            if (res[0] == top && res[1] == left){
+                                game_over();
+                                break;
+                            }
                         }
                     }
                 }
@@ -66,6 +68,9 @@ app.directive('ngKeydown', function($timeout) {
         function Bomberman_move (top, left) {
             //If there's no bricks the map was not load correctly
             if(scope.bricks.length == 0){return;}
+            
+            winner();//Check if the user wins
+
             //Check bricks collisions
             for(var i=0; i < scope.bricks.length; i++) {            
                 var res = scope.bricks[i].split(",");
@@ -87,7 +92,8 @@ app.directive('ngKeydown', function($timeout) {
                 for(var i=0; i < scope.fireup.length; i++) {            
                     var res = scope.fireup[i].split(",");
                     if (res[0] == top && res[1] == left){
-                        scope.fireup[i] = "";
+                        // removes the fireUp power from fireup array
+                        scope.fireup.splice(i,1);
                         scope.bombLength ++;
                         angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                     }       
@@ -119,7 +125,8 @@ app.directive('ngKeydown', function($timeout) {
                         //If it is allows to burn it then it will remove the box from the DOM
                         // and put the flame instead
                         if(flame){
-                            scope.boxes[i] = "";
+                            // removes box from boxes array
+                            scope.boxes.splice(i,1);
                             angular.element(".box[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                             elem.append(angular.element('<div class="image flame flame_num_'+ bombNum +'" style="top:'+ top +'px;left:'+ left +'px;"></div>'));
                             scope.flames[bombNum].push(top + ',' + left);
@@ -135,7 +142,8 @@ app.directive('ngKeydown', function($timeout) {
                     var res = scope.enemies[i].split(",");
                     if (res[0] == top && res[1] == left){                        
                         if(flame){
-                            scope.enemies[i] = "";
+                            // removes enemy from enemies array
+                            scope.enemies.splice(i,1);
                             angular.element(".enemy[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                             elem.append(angular.element('<div class="image flame flame_num_'+ bombNum +'" style="top:'+ top +'px;left:'+ left +'px;"></div>'));
                             scope.flames[bombNum].push(top + ',' + left);
@@ -150,7 +158,8 @@ app.directive('ngKeydown', function($timeout) {
                 for(var i=0; i < scope.fireup.length; i++) {            
                     var res = scope.fireup[i].split(",");
                     if (res[0] == top && res[1] == left){
-                        scope.fireup[i] = "";
+                        // removes the fireUp power from fireup array
+                        scope.fireup.splice(i,1);
                         angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                     }       
                 }
@@ -174,11 +183,20 @@ app.directive('ngKeydown', function($timeout) {
             }, 3000); //The pj explosion dissapears after 3 sec
         };
 
+        //Check if the map is clean then the game is over and the user wins
+        function winner () {
+            if(scope.enemies.length == 0 && scope.boxes.length == 0){
+                scope.modalShown = !scope.modalShown; 
+                angular.element('.ng-modal-dialog-content').css('background', 'url("./css/images/victory.png") no-repeat center center');
+            }
+        };
+
         //Function to remove the bomb fire from the view
         function flames_away (bombNum) {
             $timeout(function() {
                 angular.element('.flame_num_'+ bombNum).remove();
-                scope.flames[bombNum] = [];
+                // removes the flames from the bomb
+                scope.flames.splice(bombNum,1);
             }, 2000); //The flames dissapear after 2 sec
         };
 

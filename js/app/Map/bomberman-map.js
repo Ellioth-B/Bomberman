@@ -1,9 +1,9 @@
 'use strict';
 
 //Custom directive to compile the calendar table
-app.directive('bombermap', function ($compile, $http) {
+app.directive('bombermap', ['bricks', 'boxes', 'fireUp', 'enemy', '$compile', '$http', function (bricks, boxes, fireUp, enemy, $compile, $http) {
     function link (scope, element, attrs) {
-        $http.jsonp('js/games/map01.json?callback=JSON_CALLBACK')
+        $http.jsonp('js/app/Map/games/map01.json?callback=JSON_CALLBACK')
             .success(function (data){
                 var linkToDOM = $compile(generateMap(data));
                 // Links template and scope
@@ -26,17 +26,17 @@ app.directive('bombermap', function ($compile, $http) {
             for(var i=0; i < data.length; i++){
                 if(data[i].wall) {
                     html += "<div class='image wall' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";
-                    scope.bricks.push((50 * data[i].x) + "," + (50 * data[i].y));
+                    bricks.addBrick((50 * data[i].x) + "," + (50 * data[i].y));
                 }else if(data[i].box) {                    
                     html += "<div class='image box' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
-                    scope.boxes.push((50 * data[i].x) + "," + (50 * data[i].y));                    
+                    boxes.addBox((50 * data[i].x) + "," + (50 * data[i].y));                    
                     if(data[i].fireup){
                         html += "<div class='image fireup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
-                        scope.fireup.push((50 * data[i].x) + "," + (50 * data[i].y));  
+                        fireUp.addFireUp((50 * data[i].x) + "," + (50 * data[i].y));  
                     }
                 }else if(data[i].enemy) {
                     html += "<div class='image enemy' style='top:"+ data[i].x +"px;left:"+ data[i].y +"px;'></div>";
-                    scope.enemies.push(data[i].x + "," + data[i].y);
+                    enemy.addEnemy(data[i].x + "," + data[i].y);
                 }
             }
 
@@ -47,4 +47,4 @@ app.directive('bombermap', function ($compile, $http) {
     return {
         link: link
     };
-});
+}]);

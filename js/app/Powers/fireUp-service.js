@@ -29,6 +29,4 @@ app.service('fireUp', function () {
         }    
         return false; 
     }
-
-    
 });

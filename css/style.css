@@ -16,6 +16,10 @@ body {
 	background: url("./images/flame_plus.png") no-repeat center center;
 }
 
+.bombup {
+	background: url("./images/bomb_plus.png") no-repeat center center;
+}
+
 .explode {
 	background: url("./images/explosion.gif") no-repeat center center;
 }

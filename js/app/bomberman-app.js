@@ -7,6 +7,7 @@ app.controller('bombermanController', function($scope, $window){
     $scope.keyActionEnabled = true; //Enabled key actions
     $scope.bomber_top = 50;
     $scope.bomber_left = 50;
+    $scope.bomb_action_time = 3000; //3 sec
 
     $scope.reloadPage = function() {
        $window.location.reload();

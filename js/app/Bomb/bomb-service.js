@@ -4,11 +4,25 @@ app.service('bomb', ['bricks', 'boxes', 'fireUp', 'enemy', function(bricks, boxe
     var bomb = this,
         bombLimit = 1, //Allowed number of bombs
         bombLength = 1, //Bombs power/length
+        currentBombID,
+        allBombs = [],
         flames = []; //Array with all flames shown
 
     //Inserts the bomb in the DOM and starts the countdown to explode
-    bomb.insertBomb = function () {
+    bomb.insertBomb = function (data) {
+        allBombs.push(data);
         bombLimit --; 
+    }
+
+    bomb.removeBomb = function (top, left) {
+        if(allBombs.length != 0){
+            for(var i=0; i < allBombs.length; i++) {            
+                var res = allBombs[i].split(",");
+                if (res[0] == top && res[1] == left){
+                    allBombs.splice(i,1);                   
+                }
+            }
+        }
     }
 
     bomb.getBombLimit = function () {
@@ -38,6 +52,26 @@ app.service('bomb', ['bricks', 'boxes', 'fireUp', 'enemy', function(bricks, boxe
     bomb.addNewBombFlames = function (bombID, top, left) { 
         flames[bombID] = [];
         flames[bombID].push(top + ',' + left);
+    }
+
+    bomb.getBombID = function () {
+        return currentBombID;
+    }
+
+    bomb.checkCollision = function (top, left, remove) {
+        if(allBombs.length != 0){
+            for(var i=0; i < allBombs.length; i++) {            
+                var res = allBombs[i].split(",");
+                if (res[0] == top && res[1] == left){
+                    if (remove){
+                        currentBombID = i;
+                        allBombs.splice(i,1);
+                    }
+                    return true;                    
+                }
+            }
+        }
+        return false;
     }
 
     bomb.checkFlamesCollision = function (top, left) {

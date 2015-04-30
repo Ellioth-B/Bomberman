@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enemy', '$timeout', function(bomb, bricks, boxes, fireUp, bombUp, enemy, $timeout) {
+app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'enemy', '$timeout', function(bomb, bricks, boxes, fireUp, enemy, $timeout) {
 
     function link (scope, elem, attrs) {
         // on the keydown event, check the keycode of the pressed key and apply the needed action
@@ -8,11 +8,10 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
             if(!scope.keyActionEnabled){return;} //if key actions are disabled don't do anything
             if (e.which > 36 && e.which < 41) //Arrow keys = movement
                 applyTransition(e.which);
-            else if (e.which === 32 && bomb.getBombLimit() > 0){ //Backspace key = plant bomb                
+            else if (e.which === 32 && bomb.getBombLimit() > 0){ //Backspace key = plant bomb
                 elem.append(angular.element('<div class="image bomb bomb_num_'+ bomb.getBombLimit() +'" style="top:'+ scope.bomber_top +'px;left:'+ scope.bomber_left +'px;"></div>'));
-                scope.bomb_action_time = 3000; //make sure this value is set to 3 sec
-                bomb_explotion(bomb.getBombLimit(), scope.bomber_top, scope.bomber_left);                    
-                bomb.insertBomb(scope.bomber_top + "," + scope.bomber_left);            
+                bomb_explotion(bomb.getBombLimit(), scope.bomber_top, scope.bomber_left);
+                bomb.insertBomb();            
             }
         });
 
@@ -45,7 +44,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
             if(bomb.checkFlamesCollision(top,left))
                 game_over();
             
-            //Checks if there's any enemy collision
+            //Check if there's any enemy collision
             if(enemy.checkCollision(top,left,false))
                 game_over();
         }
@@ -55,31 +54,22 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
             //If there's no bricks the map was not load correctly
             if(bricks.getAllBricks().length == 0){return;}
             
-            //Checks if the user won
+            //Check if the user wins
             winner();
 
-            //Checks bricks collisions
+            //Check bricks collisions
             if(bricks.checkCollision(top,left))
                 return false;
 
-            //Checks boxes collisions
+            //Check boxes collisions
             if(boxes.checkCollision(top,left,false))
                 return false;
 
-            //Checks bombs collisions
-            if(bomb.checkCollision(top,left,false))
-                return false;
-
-            //Checks fireUp power collision and adds power if so
+            //Check fireUp power collision and adds power if so
             if(fireUp.checkCollision(top,left)){
+                // removes the fireUp power from the DOM
                 bomb.increaseBombLength();
                 angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
-
-            //Checks bombUp power collision and adds power if so
-            if(bombUp.checkCollision(top,left)){
-                bomb.increaseBombLimit();
-                angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
             }
 
             //If no collision found then allow bomberman to move
@@ -124,6 +114,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 //If it is allows to burn it then it will remove the box from the DOM
                 // and put the flame instead
                 if(flame){
+                    // removes box from boxes array
                     angular.element(".box[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                     elem.append(angular.element('<div class="image flame flame_num_'+ bombNum +'" style="top:'+ top +'px;left:'+ left +'px;"></div>'));
                     bomb.addFlames(bombNum, top, left);                    
@@ -131,20 +122,10 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 return false;
             }
 
-            //Checks bombs collisions
-            if(bomb.checkCollision(top,left,flame)){
-                if(flame){
-                    var element = angular.element(".bomb[style='top:"+ top +"px;left:"+ left +"px;']"),
-                        className = element[0].className.split(" "),
-                        className = className[className.length-1].split("_");
-                    scope.bomb_action_time = 0; //Imediate explosion
-                    bomb_explotion(className[className.length-1], top, left);
-                }
-            }
-
-            //Checks enemies collision
+            //Check enemies collision, same functionality as with boxes
             if (enemy.checkCollision(top,left,flame)){                        
                 if(flame){
+                    // removes enemy from enemies array
                     angular.element(".enemy[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                     elem.append(angular.element('<div class="image flame flame_num_'+ bombNum +'" style="top:'+ top +'px;left:'+ left +'px;"></div>'));
                     bomb.addFlames(bombNum, top, left); 
@@ -152,14 +133,10 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 return false;
             }
 
-            //Checks fireUp power collision and removes it
+            //Check fireUp power collision
             if (fireUp.checkCollision(top,left)){
+                // removes the fireUp power from fireup array
                 angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
-
-            //Checks bombUp power collision and removes it
-            if(bombUp.checkCollision(top,left)){
-                angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
             }
             
             //If no collision found and it is allowed to go that side then expand the fire
@@ -182,12 +159,9 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
         //Function that controls the explotion of the bomb, removing the bomb and adding flames
         var bomb_explotion = function (bombNum, positionTop, positionLeft) {
             $timeout(function() {
-                //If the bomb is no longer present it is probably because it was actioned by other bomb
-                if(angular.element(".bomb[style='top:"+ positionTop +"px;left:"+ positionLeft +"px;']").length === 0) {return;}
-                //Removes the bomb from the DOM and puts the middle fire instead                
+                //Removes the bomb from the DOM and puts the middle fire instead
                 angular.element('.bomb_num_'+ bombNum).remove(); 
                 elem.append(angular.element('<div class="image flame flame_num_'+ bombNum +'" style="top:'+ positionTop +'px;left:'+ positionLeft +'px;"></div>'));
-                bomb.removeBomb(positionTop,positionLeft);
                 //Array containing the current bomb flames so we can keep control on them
                 bomb.addNewBombFlames(bombNum, positionTop, positionLeft); 
                 var moveRight = true,
@@ -213,7 +187,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 check_Bomberman_Death(scope.bomber_top, scope.bomber_left);
                 //Call this functio to start the countdown for the fire to go away
                 flames_away(bombNum);
-            }, scope.bomb_action_time); //The bomb dissapears after 3 sec
+            }, 3000); //The bomb dissapears after 3 sec
         };
     }
 

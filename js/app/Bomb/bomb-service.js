@@ -71,11 +71,8 @@ app.service('bomb', ['bricks', 'boxes', 'fireUp', 'enemy', function(bricks, boxe
     bomb.checkCollision = function (top, left, remove) {
         if(allBombs.length != 0){
             for(var i=0; i < allBombs.length; i++) {  
-                if(allBombs[i].top == top && allBombs[i].left == left){
-                   // if (remove)
-                     //   allBombs.splice(i,1);
-                    return true; 
-                }
+                if(allBombs[i].top == top && allBombs[i].left == left)
+                    return true;                
             }
         }
         return false;

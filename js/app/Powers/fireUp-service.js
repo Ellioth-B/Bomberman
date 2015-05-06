@@ -4,12 +4,17 @@ app.service('fireUp', function () {
     var fireUp = this,
         allfireUp = [];
 
-    fireUp.getAllFireUp = function () {
-        return allfireUp;
+    //creates the bombUp object with position (Top, left)
+    fireUp.newFireUpObject = function (top, left) {
+        var fireUpObj = {
+                top: top,
+                left: left
+            };
+        return fireUpObj;
     }
 
-    fireUp.addFireUp = function (data) {
-        allfireUp.push(data);
+    fireUp.addFireUp = function (top, left) {
+        allfireUp.push(this.newFireUpObject(top,left));
     }
 
     fireUp.getFireUp = function (index) {
@@ -19,8 +24,7 @@ app.service('fireUp', function () {
     fireUp.checkCollision = function (top, left) {
         if(allfireUp.length != 0){
             for(var i=0; i < allfireUp.length; i++) {            
-                var res = allfireUp[i].split(",");
-                if (res[0] == top && res[1] == left){
+                if (allfireUp[i].top == top && allfireUp[i].left == left){
                     // removes the fireUp power from fireup array
                     allfireUp.splice(i,1);
                     return true;                    

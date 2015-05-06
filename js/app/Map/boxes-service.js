@@ -4,12 +4,21 @@ app.service('boxes', function () {
     var boxes = this,
         allBoxes = [];
 
-    boxes.getAllBoxes = function () {
-        return allBoxes;
+    //creates the box object with position (Top, left)
+    boxes.newBoxObject = function (top, left) {
+        var boxObj = {
+                top: top,
+                left: left
+            };
+        return boxObj;
     }
 
-    boxes.addBox = function (data) {
-        allBoxes.push(data);
+    boxes.getLength = function () {
+        return allBoxes.length;
+    }
+
+    boxes.addBox = function (top, left) {
+        allBoxes.push(this.newBoxObject(top,left));
     }
 
     boxes.getBox = function (index) {
@@ -19,8 +28,7 @@ app.service('boxes', function () {
     boxes.checkCollision = function (top, left, remove) {
         if(allBoxes.length != 0){
             for(var i=0; i < allBoxes.length; i++) {            
-                var res = allBoxes[i].split(",");
-                if (res[0] == top && res[1] == left){
+                if (allBoxes[i].top == top && allBoxes[i].left == left){
                     if (remove)
                         allBoxes.splice(i,1);
                     return true;

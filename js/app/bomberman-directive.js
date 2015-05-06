@@ -53,7 +53,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
         //Checks Bomberman's movement and allows it if not a wall or box
         var Bomberman_move = function (top, left) {
             //If there's no bricks the map was not load correctly
-            if(bricks.getAllBricks().length == 0){return;}
+            if(bricks.getLength() == 0){return;}
             
             //Checks if the user won
             winner();
@@ -100,7 +100,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
 
         //Check if the map is clean then the game is over and the user wins
         var winner = function () {
-            if(enemy.getAllEnemies().length == 0 && boxes.getAllBoxes().length == 0){
+            if(enemy.getLength() == 0 && boxes.getLength() == 0){
                 scope.modalShown = !scope.modalShown; 
                 angular.element('.ng-modal-dialog-content').css('background', 'url("./css/images/victory.png") no-repeat center center');
             }
@@ -113,7 +113,7 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
         //Checks the fire movement and evaluates wether it can expands or not
         var Fire_Move = function (flame, bombID, top, left) {
             //If there's no bricks the map was not load correctly
-            if(bricks.getAllBricks().length == 0){return;}
+            if(bricks.getLength() == 0){return;}
 
             //Check bricks collisions
             if(bricks.checkCollision(top,left))

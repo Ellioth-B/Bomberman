@@ -4,12 +4,21 @@ app.service('bricks', function () {
     var bricks = this,
         allBricks = [];
 
-    bricks.getAllBricks = function () {
-        return allBricks;
+    //creates the brick object with position (Top, left)
+    bricks.newBrickObject = function (top, left) {
+        var brickObj = {
+                top: top,
+                left: left
+            };
+        return brickObj;
     }
 
-    bricks.addBrick = function (data) {
-        allBricks.push(data);
+    bricks.getLength = function () {
+        return allBricks.length;
+    }
+
+    bricks.addBrick = function (top,left) {
+        allBricks.push(this.newBrickObject(top,left));
     }
 
     bricks.getBrick = function (index) {
@@ -19,8 +28,7 @@ app.service('bricks', function () {
     bricks.checkCollision = function (top, left) {
         if(allBricks.length != 0){
             for(var i=0; i < allBricks.length; i++) {            
-                var res = allBricks[i].split(",");
-                if (res[0] == top && res[1] == left)
+                if (allBricks[i].top == top && allBricks[i].left == left)
                     return true;
             }
             return false;

@@ -4,23 +4,27 @@ app.service('enemy', function () {
     var enemy = this,
         allEnemies = [];
 
-    enemy.getAllEnemies = function () {
-        return allEnemies;
+    //creates the enemy object with position (Top, left)
+    enemy.newEnemyObject = function (top, left) {
+        var enemyObj = {
+                top: top,
+                left: left
+            };
+        return enemyObj;
     }
 
-    enemy.addEnemy = function (data) {
-        allEnemies.push(data);
+    enemy.getLength = function () {
+        return allEnemies.length;
     }
 
-    enemy.getEnemy = function (index) {
-        return allEnemies[index];
+    enemy.addEnemy = function (top, left) {
+        allEnemies.push(this.newEnemyObject(top, left));
     }
 
     enemy.checkCollision = function (top, left, remove) {
         if(allEnemies.length != 0){
             for(var i=0; i < allEnemies.length; i++) {            
-                var res = allEnemies[i].split(",");
-                if (res[0] == top && res[1] == left){
+                if (allEnemies[i].top == top && allEnemies[i].left == left){
                     if (remove)
                         allEnemies.splice(i,1);
                     return true;                    

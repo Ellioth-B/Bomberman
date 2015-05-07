@@ -1,7 +1,10 @@
 'use strict';
 
 //Custom directive to compile the calendar table
-app.directive('bombermap', ['bricks', 'boxes', 'fireUp', 'bombUp', 'enemy', '$compile', '$http', function (bricks, boxes, fireUp, bombUp, enemy, $compile, $http) {
+app.directive('bombermap', 
+    ['brickService', 'boxService', 'powerUpService', 'enemyService', '$compile', '$http', 
+    function (bricks, boxes, powerUp, enemy, $compile, $http) {
+
     function link (scope, element, attrs) {
         $http.jsonp('js/app/Map/games/map01.json?callback=JSON_CALLBACK')
             .success(function (data){
@@ -32,10 +35,10 @@ app.directive('bombermap', ['bricks', 'boxes', 'fireUp', 'bombUp', 'enemy', '$co
                     boxes.addBox((50 * data[i].x), (50 * data[i].y));                    
                     if(data[i].fireup){
                         html += "<div class='image fireup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
-                        fireUp.addFireUp((50 * data[i].x), (50 * data[i].y));  
+                        powerUp.addPowerUp(1, (50 * data[i].x), (50 * data[i].y));  
                     }else if(data[i].bombup){
                         html += "<div class='image bombup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
-                        bombUp.addBombUp((50 * data[i].x), (50 * data[i].y));
+                        powerUp.addPowerUp(0, (50 * data[i].x), (50 * data[i].y));
                     }
                 }else if(data[i].enemy) {
                     html += "<div class='image enemy' style='top:"+ data[i].x +"px;left:"+ data[i].y +"px;'></div>";

@@ -1,6 +1,8 @@
 'use strict';
 
-app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enemy', '$timeout', function(bomb, bricks, boxes, fireUp, bombUp, enemy, $timeout) {
+app.directive('ngKeydown', 
+    ['bombService', 'brickService', 'boxService', 'powerUpService', 'enemyService', '$timeout', 
+    function(bomb, bricks, boxes, powerUp, enemy, $timeout) {
 
     function link (scope, elem, attrs) {
         // on the keydown event, check the keycode of the pressed key and apply the needed action
@@ -15,6 +17,22 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 bomb_explotion(bombID, scope.bomber_top, scope.bomber_left);                            
             }
         });
+
+        //Checks powerUp collision and adds the power if needed
+        var checkPowerUpCollission = function (type, top, left, flame) {
+            switch (type) {
+                case 0: //bomb+
+                    if(!flame)
+                        bomb.increaseBombLimit(); 
+                    angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
+                break;
+                case 1: //fire+
+                    if(!flame)
+                        bomb.increaseBombLength();
+                    angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
+                break;
+            }
+        }
 
         //------------------------------------------------------------------------------------
         //                  Bomberman Actions - DOM manipulation
@@ -70,17 +88,8 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
             if(bomb.checkCollision(top,left,false))
                 return false;
 
-            //Checks fireUp power collision and adds power if so
-            if(fireUp.checkCollision(top,left)){
-                bomb.increaseBombLength();
-                angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
-
-            //Checks bombUp power collision and adds power if so
-            if(bombUp.checkCollision(top,left)){
-                bomb.increaseBombLimit();
-                angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
+            //the called function will check power collissions and action them
+            checkPowerUpCollission(powerUp.checkCollision(top,left), top, left, false);
 
             //If no collision found then allow bomberman to move
             scope.bomber_top = top;
@@ -154,15 +163,8 @@ app.directive('ngKeydown', ['bomb', 'bricks', 'boxes', 'fireUp', 'bombUp', 'enem
                 return false;
             }
 
-            //Checks fireUp power collision and removes it
-            if (fireUp.checkCollision(top,left)){
-                angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
-
-            //Checks bombUp power collision and removes it
-            if(bombUp.checkCollision(top,left)){
-                angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
-            }
+            //the called function will check powers collissions and action them
+            checkPowerUpCollission(powerUp.checkCollision(top,left), top, left, flame);
             
             //If no collision found and it is allowed to go that side then expand the fire
             if(flame){

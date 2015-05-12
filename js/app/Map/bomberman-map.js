@@ -41,8 +41,10 @@ app.directive('bombermap',
                         powerUp.addPowerUp(0, (50 * data[i].x), (50 * data[i].y));
                     }
                 }else if(data[i].enemy) {
-                    html += "<div class='image enemy' style='top:"+ data[i].x +"px;left:"+ data[i].y +"px;'></div>";
-                    enemy.addEnemy(data[i].x, data[i].y);
+                    var id = enemy.addEnemy(data[i].x, data[i].y);
+                    scope['enemy_'+id+'_top'] = data[i].x;
+                    scope['enemy_'+id+'_left'] = data[i].y;
+                    html += "<div class='image enemy enemy_id_"+ id +"' style='top:{{enemy_"+id+"_top}}px;left:{{enemy_"+id+"_left}}px;'></div>";
                 }
             }
 

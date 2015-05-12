@@ -8,6 +8,7 @@ app.controller('bombermanController', function($scope, $window){
     $scope.bomber_top = 50;
     $scope.bomber_left = 50;
     $scope.bomb_action_time = 3000; //3 sec
+    $scope.enemy_speed = 1500; //1.5 sec  
 
     $scope.reloadPage = function() {
        $window.location.reload();

@@ -1,8 +1,8 @@
 'use strict';
 
 app.directive('ngKeydown', 
-    ['bombService', 'brickService', 'boxService', 'powerUpService', 'enemyService', '$timeout', 
-    function(bomb, bricks, boxes, powerUp, enemy, $timeout) {
+    ['bombService', 'brickService', 'boxService', 'powerUpService', 'enemyService', '$timeout', '$interval', 
+    function(bomb, bricks, boxes, powerUp, enemy, $timeout, $interval) {
 
     function link (scope, elem, attrs) {
         // on the keydown event, check the keycode of the pressed key and apply the needed action
@@ -101,6 +101,7 @@ app.directive('ngKeydown',
         var game_over = function () {
             angular.element('.bombermanPj').addClass('explode');
             scope.keyActionEnabled = false;
+            $interval.cancel(enemiesInterval);
             $timeout(function() {
                 angular.element('.bombermanPj').css('background', 'none');
                 scope.modalShown = !scope.modalShown;            
@@ -172,7 +173,7 @@ app.directive('ngKeydown',
                 bomb.addFlames(bombID, top, left); 
             }            
             return true;
-        };
+        }
 
         //Function to remove the bomb and flames
         var flames_away = function (bombID) {
@@ -182,7 +183,7 @@ app.directive('ngKeydown',
                 //removes the bomb object
                 bomb.removeBomb(bombID);
             }, 2000); //flames dissapear after 2 sec
-        };
+        }
 
         //Function that controls the explotion of the bomb, removing the bomb and adding flames
         var bomb_explotion = function (bombID, top, left) {
@@ -219,7 +220,46 @@ app.directive('ngKeydown',
                 //Call this functio to start the countdown for the fire to go away
                 flames_away(bombID);
             }, scope.bomb_action_time); //The bomb dissapears after 3 sec
-        };
+        }
+        
+        //------------------------------------------------------------------------------------
+        //                  Enemy Actions - DOM manipulation
+        //------------------------------------------------------------------------------------
+
+        var enemiesInterval = $interval(function(){
+                enemyMove(); 
+            },scope.enemy_speed);
+
+        var enemyMove = function () {
+            if(enemy.getLength() === 0){ 
+                $interval.cancel(enemiesInterval);
+                return;
+            }
+
+            for(var i=0; i<enemy.getLength(); i++){
+                var enemyID = enemy.getID(i),                    
+                    top = enemy.getTopVal(enemyID),
+                    left = enemy.getLeftVal(enemyID),
+                    directionArray = enemy.checkPossibilities(enemyID, top, left);
+
+                if(directionArray.length > 0) {
+                    var randomNumber = Math.floor(Math.random()*directionArray.length),
+                        decision = directionArray[randomNumber];
+                    applyEnemyMove(enemyID, decision, top, left);
+                }
+            }
+        }
+
+        var applyEnemyMove = function(enemyID, decision, top, left) {
+            //Apply CSS change to scope and update enemy object
+            var finalDecision = enemy.update(enemyID, decision, top, left);
+
+            scope['enemy_'+enemyID+'_top'] = finalDecision.top;
+            scope['enemy_'+enemyID+'_left'] = finalDecision.left;
+            //check if the place where the enemy is moving would kill bomberman
+            if(top === scope.bomber_top && left === scope.bomber_left)
+                game_over();  
+        }
     }
 
     return {

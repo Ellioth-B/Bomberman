@@ -26,6 +26,9 @@ app.service('brickService', function () {
                 }
                 return false;
             }        
+        },
+        reset: function () {
+            allBricks = [];
         }
     };
 });

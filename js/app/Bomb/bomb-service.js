@@ -2,7 +2,7 @@
 
 app.service('bombService', function () {
     var bombLimit = 1, //Allowed number of bombs
-        bombLength = 1, //Bombs power/length
+        bombRange = 1, //Bombs power/length
         bombID = 0,
         allBombs = []; //Array that will contain the active bombs
 
@@ -21,7 +21,7 @@ app.service('bombService', function () {
             return bombObj;
         },
         //creates a new bomb object and inserts it into our bombs array
-        insertBomb: function (top, left) {
+        insert: function (top, left) {
             allBombs.push(this.newBombObject(bombID,top,left));
             var currentBombID = bombID;
             bombID++;
@@ -29,7 +29,7 @@ app.service('bombService', function () {
             return currentBombID;
         },
         //removes the bomb with ID = bombID from the array
-        removeBomb: function (bombID) {
+        remove: function (bombID) {
             if(allBombs.length != 0){
                 for(var i=0; i<allBombs.length; i++) {            
                     if (allBombs[i].bombID == bombID)
@@ -37,17 +37,17 @@ app.service('bombService', function () {
                 }
             }
         },
-        getBombLimit: function () {
+        getLimit: function () {
             return bombLimit;
         },
-        increaseBombLimit: function (){
+        increaseLimit: function (){
             bombLimit ++;
         },
-        getBombLength: function () {
-            return bombLength;
+        getRange: function () {
+            return bombRange;
         },
-        increaseBombLength: function () {
-            bombLength ++;
+        increaseRange: function () {
+            bombRange ++;
         },
         //Adds all the bomb flames into the bomb object
         addFlames: function (bombID, top, left) {
@@ -80,6 +80,12 @@ app.service('bombService', function () {
                 }
             }
             return false;
+        },
+        reset: function () {
+            bombLimit = 1;
+            bombRange = 1;
+            bombID = 0;            
+            allBombs = [];
         }
     };
 });

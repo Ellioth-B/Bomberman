@@ -17,10 +17,20 @@
 	<script type="text/javascript" src="js/modal_dialog.js"></script>
 </head>
 <body ng-controller="bombermanController as control" ng-keydown="">
+	<div class="scoreBoard">
+		<img src="./css/images/Bomberman_Logo.png"/><br>
+		- Level: {{map_type}}<br>
+		- Lives: <div class="liveHeart" ng-repeat="i in getLives() track by $index"></div></br>
+		- Fire length: <div class="fireLength" ng-repeat="j in getFireLength() track by $index"></div></br>
+		- Bomb limit: <div class="bombLimit" ng-repeat="z in getBombLimit() track by $index"></div></br>
+		- Enemies left: {{enemiesLeft}}<br>
+		- Soft bricks left: {{boxesLeft}}<br>
+	</div>
 	<table bombermap></table>
 	<div class="image bombermanPj" style="top: {{bomber_top}}px; left: {{bomber_left}}px;"></div>
 	<modal-dialog show='modalShown' width='750px' height='65%'>
-		<button class="ng-modal-button reload-button" ng-click="reloadPage();">Restart</button>
+		<button class="ng-modal-button next-button" ng-show="(map_type < map_type_limit) && !gameOver" ng-click="nextLevel()">Next Level</button>
+		<button class="ng-modal-button reload-button" ng-click="restartLevel();">Restart Level</button>
 		<button class="ng-modal-button end-button" ng-click="endGame();">End Game</button>
 	</modal-dialog>
 </body>

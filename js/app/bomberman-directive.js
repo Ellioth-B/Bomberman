@@ -10,25 +10,43 @@ app.directive('ngKeydown',
             if(!scope.keyActionEnabled){return;} //if key actions are disabled don't do anything
             if (e.which > 36 && e.which < 41) //Arrow keys = movement
                 applyTransition(e.which);
-            else if (e.which === 32 && bomb.getBombLimit() > 0){ //Backspace key = plant bomb                
-                var bombID = bomb.insertBomb(scope.bomber_top, scope.bomber_left);
+            else if (e.which === 32 && bomb.getLimit() > 0){ //Backspace key = plant bomb                
+                var bombID = bomb.insert(scope.bomber_top, scope.bomber_left);
                 elem.append(angular.element('<div class="image bomb bomb_num_'+ bombID +'" style="top:'+ scope.bomber_top +'px;left:'+ scope.bomber_left +'px;"></div>'));
                 scope.bomb_action_time = 3000; //make sure this value is set to 3 sec
                 bomb_explotion(bombID, scope.bomber_top, scope.bomber_left);                            
             }
         });
 
+        //returns an array of fire length to use on ng-repeat
+        scope.getFireLength = function() {
+            var length = bomb.getRange();
+            if(length > 0)
+                return new Array(length);   
+            else
+                return false;
+        }
+
+        //returns an array of bomb limit to use on ng-repeat
+        scope.getBombLimit = function() {
+            var limit = bomb.getLimit();
+            if(limit > 0)
+                return new Array(limit);   
+            else
+                return false;
+        }        
+
         //Checks powerUp collision and adds the power if needed
         var checkPowerUpCollission = function (type, top, left, flame) {
             switch (type) {
                 case 0: //bomb+
                     if(!flame)
-                        bomb.increaseBombLimit(); 
+                        bomb.increaseLimit(); 
                     angular.element(".bombup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                 break;
                 case 1: //fire+
                     if(!flame)
-                        bomb.increaseBombLength();
+                        bomb.increaseRange();
                     angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                 break;
             }
@@ -99,9 +117,27 @@ app.directive('ngKeydown',
 
         //BombermanPJ was destroyed and game over options will appear
         var game_over = function () {
+            //If bomberman is flickering is immune to damage, so return
+            if(angular.element('.bombermanPj').hasClass('flicker'))
+                return;
+
+            //if it receives damage, check the rest of lives
+            scope.lives--;
+            if(scope.lives > 0){         
+                //if there's some live left then apply the flickering immune for 3 sec
+                angular.element('.bombermanPj').addClass('flicker');
+                $timeout(function() {
+                    angular.element('.bombermanPj').removeClass('flicker');          
+                }, 3000); //The pj flickering dissapears after 3 sec
+                return;
+            }
+            
+            //If it runs out of lives and is not immune then it will explode and show game over
             angular.element('.bombermanPj').addClass('explode');
-            scope.keyActionEnabled = false;
             $interval.cancel(enemiesInterval);
+            scope.keyActionEnabled = false;
+            scope.gameOver = true;
+            angular.element('.ng-modal-dialog-content').removeClass('winner');
             $timeout(function() {
                 angular.element('.bombermanPj').css('background', 'none');
                 scope.modalShown = !scope.modalShown;            
@@ -112,7 +148,7 @@ app.directive('ngKeydown',
         var winner = function () {
             if(enemy.getLength() == 0 && boxes.getLength() == 0){
                 scope.modalShown = !scope.modalShown; 
-                angular.element('.ng-modal-dialog-content').css('background', 'url("./css/images/victory.png") no-repeat center center');
+                angular.element('.ng-modal-dialog-content').addClass('winner');
             }
         }
 
@@ -181,7 +217,7 @@ app.directive('ngKeydown',
                 //removes the bomb flames from the view
                 angular.element('.flame_num_'+ bombID).remove();
                 //removes the bomb object
-                bomb.removeBomb(bombID);
+                bomb.remove(bombID);
             }, 2000); //flames dissapear after 2 sec
         }
 
@@ -200,7 +236,7 @@ app.directive('ngKeydown',
                     moveTop = true;
 
                 //Loop to expand flames depending on bomb power "bombLength"
-                for(var i = 1; i <= bomb.getBombLength(); i++){   
+                for(var i = 1; i <= bomb.getRange(); i++){   
                     if(!Fire_Move(moveRight, bombID, top, (left + 50*i)))
                         moveRight = false;
                     if(!Fire_Move(moveLeft, bombID, top, (left - 50*i)))
@@ -213,10 +249,10 @@ app.directive('ngKeydown',
 
                 //Once finished the bombLimit is reseted as before and checks if bomberman
                 // was in the middle of the fire the moment it was activated
-                bomb.increaseBombLimit();
-                check_Bomberman_Death(scope.bomber_top, scope.bomber_left);
-                //Checks if the user won
+                bomb.increaseLimit();
+                //Checks if the user won or is dead
                 winner();
+                check_Bomberman_Death(scope.bomber_top, scope.bomber_left);                
                 //Call this functio to start the countdown for the fire to go away
                 flames_away(bombID);
             }, scope.bomb_action_time); //The bomb dissapears after 3 sec
@@ -236,7 +272,7 @@ app.directive('ngKeydown',
                 return;
             }
 
-            for(var i=0; i<enemy.getLength(); i++){
+            for(var i=0; i<enemy.getLength(); i++){                
                 var enemyID = enemy.getID(i),                    
                     top = enemy.getTopVal(enemyID),
                     left = enemy.getLeftVal(enemyID),

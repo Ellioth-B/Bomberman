@@ -32,6 +32,9 @@ app.service('boxService', function () {
                 }
             }
             return false;
+        },
+        reset: function () {
+            allBoxes = [];
         }
     };
 });

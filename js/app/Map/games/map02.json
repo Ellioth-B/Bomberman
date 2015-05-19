@@ -1,4 +1,4 @@
-angular.callbacks._0 ([
+angular.callbacks._1 ([
     {//[0, Y]
         x: 0,
         y: 0,
@@ -87,7 +87,7 @@ angular.callbacks._0 ([
         x: 1,
         y: 3,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 1,
@@ -111,7 +111,8 @@ angular.callbacks._0 ([
         x: 1,
         y: 7,
         wall: false,
-        box: false
+        box: false,
+        enemy: true
     },
     {
         x: 1,
@@ -123,7 +124,7 @@ angular.callbacks._0 ([
         x: 1,
         y: 9,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 1,
@@ -177,7 +178,7 @@ angular.callbacks._0 ([
         x: 2,
         y: 7,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 2,
@@ -189,7 +190,7 @@ angular.callbacks._0 ([
         x: 2,
         y: 9,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 2,
@@ -207,14 +208,13 @@ angular.callbacks._0 ([
         x: 3,
         y: 1,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 3,
         y: 2,
         wall: false,
-        box: true,
-        bombup: true
+        box: true
     },
     {
         x: 3,
@@ -226,25 +226,25 @@ angular.callbacks._0 ([
         x: 3,
         y: 4,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 3,
         y: 5,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 3,
         y: 6,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 3,
         y: 7,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 3,
@@ -274,7 +274,7 @@ angular.callbacks._0 ([
         x: 4,
         y: 1,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 4,
@@ -298,7 +298,7 @@ angular.callbacks._0 ([
         x: 4,
         y: 5,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 4,
@@ -310,8 +310,7 @@ angular.callbacks._0 ([
         x: 4,
         y: 7,
         wall: false,
-        box: true,
-        bombup: true
+        box: true
     },
     {
         x: 4,
@@ -323,7 +322,8 @@ angular.callbacks._0 ([
         x: 4,
         y: 9,
         wall: false,
-        box: false
+        box: true,
+        bombup: true
     },
     {
         x: 4,
@@ -341,45 +341,45 @@ angular.callbacks._0 ([
         x: 5,
         y: 1,
         wall: false,
-        box: true
-    },
-    {
-        x: 5,
-        y: 2,
-        wall: false,
-        box: true,
-        fireup: true
-    },
-    {
-        x: 5,
-        y: 3,
-        wall: false,
-        box: true
-    },
-    {
-        x: 5,
-        y: 4,
-        wall: false,
-        box: false
-    },
-    {
-        x: 5,
-        y: 5,
-        wall: false,
         box: false,
         enemy: true
     },
     {
         x: 5,
-        y: 6,
+        y: 2,
+        wall: false,
+        box: false
+    },
+    {
+        x: 5,
+        y: 3,
+        wall: false,
+        box: true,
+        bombup: true
+    },
+    {
+        x: 5,
+        y: 4,
         wall: false,
         box: true
     },
     {
         x: 5,
-        y: 7,
+        y: 5,
+        wall: false,
+        box: true
+    },
+    {
+        x: 5,
+        y: 6,
         wall: false,
         box: false
+    },
+    {
+        x: 5,
+        y: 7,
+        wall: false,
+        box: true
     },
     {
         x: 5,
@@ -409,7 +409,7 @@ angular.callbacks._0 ([
         x: 6,
         y: 1,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 6,
@@ -421,8 +421,7 @@ angular.callbacks._0 ([
         x: 6,
         y: 3,
         wall: false,
-        box: true,
-        bombup: true
+        box: true
     },
     {
         x: 6,
@@ -446,7 +445,8 @@ angular.callbacks._0 ([
         x: 6,
         y: 7,
         wall: false,
-        box: true
+        box: true,
+        fireup: true
     },
     {
         x: 6,
@@ -488,31 +488,32 @@ angular.callbacks._0 ([
         x: 7,
         y: 3,
         wall: false,
-        box: true
+        box: false,
+        enemy: true
     },
     {
         x: 7,
         y: 4,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 7,
         y: 5,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 7,
         y: 6,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 7,
         y: 7,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 7,
@@ -524,7 +525,7 @@ angular.callbacks._0 ([
         x: 7,
         y: 9,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 7,
@@ -542,7 +543,8 @@ angular.callbacks._0 ([
         x: 8,
         y: 1,
         wall: false,
-        box: false
+        box: true,
+        fireup: true
     },
     {
         x: 8,
@@ -554,7 +556,7 @@ angular.callbacks._0 ([
         x: 8,
         y: 3,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 8,
@@ -566,8 +568,7 @@ angular.callbacks._0 ([
         x: 8,
         y: 5,
         wall: false,
-        box: true,
-        fireup: true
+        box: true
     },
     {
         x: 8,
@@ -579,7 +580,7 @@ angular.callbacks._0 ([
         x: 8,
         y: 7,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 8,
@@ -591,7 +592,7 @@ angular.callbacks._0 ([
         x: 8,
         y: 9,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 8,
@@ -609,14 +610,13 @@ angular.callbacks._0 ([
         x: 9,
         y: 1,
         wall: false,
-        box: false,
-        enemy: true
+        box: false
     },
     {
         x: 9,
         y: 2,
         wall: false,
-        box: false
+        box: true
     },
     {
         x: 9,
@@ -628,13 +628,13 @@ angular.callbacks._0 ([
         x: 9,
         y: 4,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 9,
         y: 5,
         wall: false,
-        box: true
+        box: false
     },
     {
         x: 9,

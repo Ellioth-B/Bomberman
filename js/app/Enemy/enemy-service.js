@@ -153,6 +153,10 @@ app.service('enemyService',
             }
 
             return possibleMoves;
-        }        
+        },
+        reset: function () {
+            allEnemies = [];
+            enemyID = 0;
+        }
     };
 }]);

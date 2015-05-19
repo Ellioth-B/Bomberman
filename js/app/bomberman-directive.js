@@ -262,9 +262,16 @@ app.directive('ngKeydown',
         //                  Enemy Actions - DOM manipulation
         //------------------------------------------------------------------------------------
 
-        var enemiesInterval = $interval(function(){
+        var enemiesInterval;
+        var startEnemyInterval = function () {
+            enemiesInterval = $interval(function(){
                 enemyMove(); 
             },scope.enemy_speed);
+        }
+
+        scope.$watch('map_type', function() {                 
+            startEnemyInterval();
+        });
 
         var enemyMove = function () {
             if(enemy.getLength() === 0){ 

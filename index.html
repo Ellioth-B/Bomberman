@@ -3,22 +3,22 @@
 <head>
 	<title>Bomberman</title>
 	<meta name="author" content="Sergio Ortega"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<script type='text/javascript' src='js/jquery-1.11.1.js'></script>
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script	type="text/javascript" src="js/app/bomberman-app.js"></script>
-	<script type="text/javascript" src="js/app/Map/bomberman-map.js"></script>	
-	<script type="text/javascript" src="js/app/Map/bricks-service.js"></script>
-	<script type="text/javascript" src="js/app/Map/boxes-service.js"></script>	
-	<script type="text/javascript" src="js/app/Powers/powerUp-service.js"></script>
-	<script type="text/javascript" src="js/app/Enemy/enemy-service.js"></script>
-	<script type="text/javascript" src="js/app/Bomb/bomb-service.js"></script>
-	<script type="text/javascript" src="js/app/bomberman-directive.js"></script>
-	<script type="text/javascript" src="js/modal_dialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+	<script type='text/javascript' src='assets/libs/jquery-1.11.1.js'></script>
+	<script type="text/javascript" src="assets/libs/angular.min.js"></script>
+	<script	type="text/javascript" src="app/bomberman-app.js"></script>
+	<script type="text/javascript" src="app/Map/bomberman-map.js"></script>	
+	<script type="text/javascript" src="app/Map/bricks-service.js"></script>
+	<script type="text/javascript" src="app/Map/boxes-service.js"></script>	
+	<script type="text/javascript" src="app/Powers/powerUp-service.js"></script>
+	<script type="text/javascript" src="app/Enemy/enemy-service.js"></script>
+	<script type="text/javascript" src="app/Bomb/bomb-service.js"></script>
+	<script type="text/javascript" src="app/bomberman-directive.js"></script>
+	<script type="text/javascript" src="assets/libs/modal_dialog.js"></script>
 </head>
 <body ng-controller="bombermanController as control" ng-keydown="">
 	<div class="scoreBoard">
-		<img src="./css/images/Bomberman_Logo.png"/><br>
+		<img src="./assets/img/Bomberman_Logo.png"/><br>
 		- Level: {{map_type}}<br>
 		- Lives: <div class="liveHeart" ng-repeat="i in getLives() track by $index"></div></br>
 		- Fire length: <div class="fireLength" ng-repeat="j in getFireLength() track by $index"></div></br>

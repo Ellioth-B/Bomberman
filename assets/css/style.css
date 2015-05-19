@@ -17,7 +17,7 @@ body {
 .liveHeart {	
 	height: 16px;
 	width: 16px;
-	background: url("./images/heartIcon.png") no-repeat center center;
+	background: url("../img/heartIcon.png") no-repeat center center;
 	background-size: cover;
 	display: inline-block;
 	margin-right: 5px;
@@ -26,7 +26,7 @@ body {
 .bombLimit {	
 	height: 16px;
 	width: 16px;
-	background: url("./images/bomb_pink.png") no-repeat center center;
+	background: url("../img/bomb_pink.png") no-repeat center center;
 	background-size: cover;
 	display: inline-block;
 	margin-right: 5px;
@@ -35,18 +35,18 @@ body {
 .fireLength {	
 	height: 16px;
 	width: 16px;
-	background: url("./images/flame.png") no-repeat center center;
+	background: url("../img/flame.png") no-repeat center center;
 	background-size: cover;
 	display: inline-block;
 	margin-right: 5px;
 }
 
 .bombermanPj {
-	background: url("./images/Bomberman-pink.png") no-repeat center center;
+	background: url("../img/Bomberman-pink.png") no-repeat center center;
   	z-index: 1;
 }
 .explode {
-	background: url("./images/explosion.gif") no-repeat center center;
+	background: url("../img/explosion.gif") no-repeat center center;
 }
 
 .flicker
@@ -90,20 +90,20 @@ body {
 }
 
 .wall_1 {
-	background: #000 url("./images/map/hard_block.png") no-repeat center center;
+	background: #000 url("../img/map/hard_block.png") no-repeat center center;
 }
 .wall_2 {
-	background: #000 url("./images/map/hard_block_2.png") no-repeat center center;
+	background: #000 url("../img/map/hard_block_2.png") no-repeat center center;
 }
 
 .box {
 	z-index: 1;
 }
 .box_1 {
-	background: #000 url("./images/map/soft_block.png") no-repeat center center;
+	background: #000 url("../img/map/soft_block.png") no-repeat center center;
 }
 .box_2 {
-	background: #000 url("./images/map/soft_block_2.png") no-repeat center center;
+	background: #000 url("../img/map/soft_block_2.png") no-repeat center center;
 }
 
 .enemy {
@@ -113,24 +113,24 @@ body {
     -o-transition: all .5s ease-in-out; /** Opera **/
 }
 .enemy_1 {
-	background: url("./images/enemy/blue_monster.png") no-repeat center center;
+	background: url("../img/enemy/blue_monster.png") no-repeat center center;
 }
 .enemy_2 {
-	background: url("./images/enemy/green_monster.png") no-repeat center center;
+	background: url("../img/enemy/green_monster.png") no-repeat center center;
 }
 
 .fireup {
-	background: url("./images/power/flame_plus.png") no-repeat center center;
+	background: url("../img/power/flame_plus.png") no-repeat center center;
 }
 .bombup {
-	background: url("./images/power/bomb_plus.png") no-repeat center center;
+	background: url("../img/power/bomb_plus.png") no-repeat center center;
 }
 
 .bomb {
-	background: #000 url("./images/bomb_pink.png") no-repeat center center;
+	background: #000 url("../img/bomb_pink.png") no-repeat center center;
 }
 .flame {
-	background: #000 url("./images/flame.png") no-repeat center center;
+	background: #000 url("../img/flame.png") no-repeat center center;
 }
 
 .image {
@@ -166,13 +166,13 @@ body {
 	-moz-transform: translate(-50%, -50%);
 }
 .ng-modal-dialog-content {
-  	background: url("./images/game-over.png") no-repeat center center;
+  	background: url("../img/game-over.png") no-repeat center center;
   	background-size: contain;
   	width: 100%;
   	height: 95%;
 }
 .winner {
-	background: url("./images/victory.png") no-repeat center center;
+	background: url("../img/victory.png") no-repeat center center;
 }
 .ng-modal-button {
 	position: absolute;

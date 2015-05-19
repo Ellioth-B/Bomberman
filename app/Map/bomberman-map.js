@@ -50,7 +50,7 @@ app.directive('bombermap',
     return {
         link: function (scope, element, attrs) {
             scope.$watch('map_type', function() {
-                $http.jsonp('js/app/Map/games/map0'+ scope.map_type +'.json?callback=JSON_CALLBACK')
+                $http.jsonp('app/Map/games/map0'+ scope.map_type +'.json?callback=JSON_CALLBACK')
                     .success(function (data){                        
                         var linkToDOM = $compile(generateMap(scope, data)); 
                         // Links template and scope

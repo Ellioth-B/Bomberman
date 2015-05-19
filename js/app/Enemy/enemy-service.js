@@ -46,7 +46,7 @@ app.service('enemyService',
             return false;
 
         //Checks bombs collisions
-        if(bomb.checkCollision(top,left,false))
+        if(bomb.checkCollision(top,left,true))
             return false;
 
         //Checking flames collision

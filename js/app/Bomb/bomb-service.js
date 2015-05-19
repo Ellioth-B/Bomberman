@@ -13,6 +13,7 @@ app.service('bombService', function () {
                     bombID: id,
                     top: top,
                     left: left,
+                    active: false,
                     flames: [{
                         top:top, 
                         left:left
@@ -54,17 +55,21 @@ app.service('bombService', function () {
             if(allBombs.length != 0){
                 for(var i=0; i<allBombs.length; i++) {  
                     if(allBombs[i].bombID == bombID){
+                        allBombs[i].active = true;
                         allBombs[i].flames.push({'top':top, 'left':left});
                     }
                 }
             }
         },
         //checks bomb collissions and removes it if needed (when other bomb activates it)
-        checkCollision: function (top, left, remove) {
+        checkCollision: function (top, left, goOver) {
             if(allBombs.length != 0){
                 for(var i=0; i < allBombs.length; i++) {  
-                    if(allBombs[i].top == top && allBombs[i].left == left)
-                        return true;                
+                    if(allBombs[i].top == top && allBombs[i].left == left){
+                        //Don't allow to go over the bomb if it is not active
+                        if(goOver && !allBombs[i].active)
+                            return true;                
+                    }
                 }
             }
             return false;

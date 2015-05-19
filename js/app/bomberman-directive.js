@@ -103,7 +103,7 @@ app.directive('ngKeydown',
                 return false;
 
             //Checks bombs collisions
-            if(bomb.checkCollision(top,left,false))
+            if(bomb.checkCollision(top,left,true))
                 return false;
 
             //the called function will check power collissions and action them

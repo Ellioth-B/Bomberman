@@ -229,6 +229,7 @@ app.directive('ngKeydown',
                 //Removes the bomb from the DOM and puts the middle fire instead                
                 angular.element('.bomb_num_'+ bombID).remove(); 
                 elem.append(angular.element('<div class="image flame flame_num_'+ bombID +'" style="top:'+ top +'px;left:'+ left +'px;"></div>'));
+                bomb.addFlames(bombID, top, left);
 
                 var moveRight = true,
                     moveLeft = true,

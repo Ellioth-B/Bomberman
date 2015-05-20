@@ -15,8 +15,8 @@ app.service('bombService', function () {
                     left: left,
                     active: false,
                     flames: [{
-                        top:top, 
-                        left:left
+                        top: null,
+                        left: null
                     }]
                 };
             return bombObj;

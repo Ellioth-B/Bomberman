@@ -125,6 +125,9 @@ body {
 .bombup {
 	background: url("../img/power/bomb_plus.png") no-repeat center center;
 }
+.heartup {
+	background: url("../img/power/heart_plus.png") no-repeat center center;
+}
 
 .bomb {
 	background: #000 url("../img/bomb_pink.png") no-repeat center center;

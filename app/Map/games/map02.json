@@ -476,7 +476,8 @@ angular.callbacks._1 ([
         x: 7,
         y: 1,
         wall: false,
-        box: true
+        box: true,
+        heart: true
     },
     {
         x: 7,

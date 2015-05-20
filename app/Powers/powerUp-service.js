@@ -3,7 +3,7 @@
 app.service('powerUpService', function () {
     var allPowerUp = [];
 
-    //returns type integer value. bomb = 0; fire = 1
+    //returns type integer value. bomb = 0; fire = 1; heart = 2
     var powerType = function (type) {
         switch(type){
             case "bomb":
@@ -11,6 +11,9 @@ app.service('powerUpService', function () {
             break;
             case "fire":
                 return 1;
+            break;
+            case "heart":
+                return 2;
             break;
         }
     }

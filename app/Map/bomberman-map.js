@@ -36,6 +36,9 @@ app.directive('bombermap',
                 }else if(data[i].bombup){
                     html += "<div class='image bombup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
                     powerUp.addPowerUp('bomb', (50 * data[i].x), (50 * data[i].y));
+                }else if(data[i].heart){
+                    html += "<div class='image heartup' style='top:"+ (50 * data[i].x) +"px;left:"+ (50 * data[i].y) +"px;'></div>";                    
+                    powerUp.addPowerUp('heart', (50 * data[i].x), (50 * data[i].y));
                 }
             }else if(data[i].enemy) {
                 var id = enemy.addEnemy((50*data[i].x), (50*data[i].y));

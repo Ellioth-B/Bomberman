@@ -49,6 +49,11 @@ app.directive('ngKeydown',
                         bomb.increaseRange();
                     angular.element(".fireup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
                 break;
+                case 2: //heart+
+                    if(!flame)
+                        scope.lives++;
+                    angular.element(".heartup[style='top:"+ top +"px;left:"+ left +"px;']").remove();
+                break;
             }
         }
 

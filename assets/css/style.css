@@ -13,6 +13,12 @@ body {
 .scoreBoard img {
 	margin-bottom: 20px;
 }
+@media (min-width: 1029px) {
+	.scoreBoard {
+		margin-left: 580px;
+		margin-top: 0;
+	}
+}
 
 .liveHeart {	
 	height: 16px;

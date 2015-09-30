@@ -26,7 +26,7 @@ app.service('enemyService',
                 left = left - 50;
             break;
             case 'top':
-                top = top - 50;                       
+                top = top - 50;
             break;
             case 'bottom':
                 top = top + 50;
@@ -52,7 +52,7 @@ app.service('enemyService',
         //Checking flames collision
         if(bomb.checkFlamesCollision(top,left))
             return false;
-                    
+
         return true;
     };
 
@@ -65,16 +65,16 @@ app.service('enemyService',
     };
 
     return {
-        //returns the length of our enemies array
-        getLength: function () {
-            return allEnemies.length;
-        },
         //adds an enemy object to the array
         addEnemy: function (top, left) {
             allEnemies.push(newEnemyObject(enemyID, top, left));
             var currentEnemyID = enemyID;
-            enemyID++;            
+            enemyID++;
             return currentEnemyID;
+        },
+        //returns the length of our enemies array
+        getLength: function () {
+            return allEnemies.length;
         },
         //returns the enemy ID
         getID: function (index) {
@@ -85,14 +85,14 @@ app.service('enemyService',
             for(var i=0; i<allEnemies.length;i++){
                 if(allEnemies[i].enemyID === enemyID)
                     return allEnemies[i].top;
-            } 
+            }
         },
         //returns the left value of the desired enemy
         getLeftVal: function (enemyID) {
             for(var i=0; i<allEnemies.length;i++){
                 if(allEnemies[i].enemyID === enemyID)
                     return allEnemies[i].left;
-            } 
+            }
         },
         //updates the position of the passed enemy index (enemyID)
         //and sets the latest successful direction taken
@@ -110,12 +110,12 @@ app.service('enemyService',
         },
         //checks enemies collission
         checkCollision: function (top, left, remove) {
-            if(allEnemies.length != 0){
-                for(var i=0; i < allEnemies.length; i++) {            
+            if(allEnemies.length !== 0){
+                for(var i=0; i < allEnemies.length; i++) {
                     if (allEnemies[i].top == top && allEnemies[i].left == left){
                         if (remove)
                             allEnemies.splice(i,1);
-                        return true;                    
+                        return true;
                     }
                 }
             }
@@ -133,7 +133,7 @@ app.service('enemyService',
                 latestDecision = getLatestDecision(enemyID);
 
             //If the enemy went to one direction, we try to keep going that way
-            if(latestDecision != ''){
+            if(latestDecision !== ''){
                 var decision = decisionTopLeft(latestDecision, top, left);
                 if(checkMove(decision.top, decision.left))
                     possibleMoves.push(latestDecision);
@@ -148,7 +148,7 @@ app.service('enemyService',
                 angular.forEach(directionArray, function(value) {
                     var decision = decisionTopLeft(value, top, left);
                     if(checkMove(decision.top, decision.left))
-                        possibleMoves.push(value);                    
+                        possibleMoves.push(value);
                 });
             }
 

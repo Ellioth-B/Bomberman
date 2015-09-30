@@ -95,6 +95,9 @@ body {
 .wall_2 {
 	background: #000 url("../img/map/hard_block_2.png") no-repeat center center;
 }
+.wall_3 {
+	background: #000 url("../img/map/hard_block_3.png") no-repeat center center;
+}
 
 .box {
 	z-index: 1;
@@ -104,6 +107,9 @@ body {
 }
 .box_2 {
 	background: #000 url("../img/map/soft_block_2.png") no-repeat center center;
+}
+.box_3 {
+	background: #000 url("../img/map/soft_block_3.png") no-repeat center center;
 }
 
 .enemy {
@@ -117,6 +123,9 @@ body {
 }
 .enemy_2 {
 	background: url("../img/enemy/green_monster.png") no-repeat center center;
+}
+.enemy_3 {
+	background: url("../img/enemy/orange_monster.png") no-repeat center center;
 }
 
 .fireup {
